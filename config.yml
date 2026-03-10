@@ -1,0 +1,14 @@
+app:
+  name: user-flow
+  environment: local
+  url: 0.0.0.0:8000
+
+db:
+  postgres:
+    connection: postgres
+    host: database
+    port: 5433
+    database: user-flow
+    username: rustem
+    password: rustem-admin
+    sslmode: disable

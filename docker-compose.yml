@@ -1,0 +1,28 @@
+networks:
+  user-flow:
+
+services:
+  go:
+    build:
+      context: .
+      dockerfile: docker/go/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    environment:
+      - "DB_HOST=database"
+    networks:
+      - user-flow
+
+  database:
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: "user-flow"
+      POSTGRES_USER: "rustem"
+      POSTGRES_PASSWORD: "rustem-admin"
+    networks:
+      - user-flow
