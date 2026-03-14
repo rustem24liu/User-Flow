@@ -6,8 +6,8 @@ app:
 db:
   postgres:
     connection: postgres
-    host: database
-    port: 5433
+    host: 10.10.72.12
+    port: 5439
     database: user-flow
     username: rustem
     password: rustem-admin

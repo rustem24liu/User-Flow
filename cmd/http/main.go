@@ -1,13 +1,14 @@
 package main
 
 import (
-	"context"
-	"fmt"
+	"log"
+	"user-flow/api"
 )
 
 func main() {
-	fmt.Println("user flow project started")
+	server := api.NewServer()
 
-	ctx := context.Background()
-
+	if err := server.Run(); err != nil {
+		log.Fatal(err)
+	}
 }
