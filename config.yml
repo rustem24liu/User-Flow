@@ -1,12 +1,12 @@
 app:
   name: user-flow
-  environment: local
+  environment: dev
   url: 0.0.0.0:8000
 
 db:
   postgres:
     connection: postgres
-    host: 10.10.72.12
+    host: 192.168.0.103
     port: 5439
     database: user-flow
     username: rustem

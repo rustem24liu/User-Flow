@@ -15,10 +15,8 @@ type Server struct {
 	pgdb   *gorm.DB
 }
 
-var handler *gin.Engine
-
 func NewServer() *Server {
-	router := gin.New()
+	router := gin.Default()
 	configs.InitConfig()
 	pgdb := postgres.NewClient()
 
@@ -32,10 +30,15 @@ func NewServer() *Server {
 
 func (s *Server) Run() error {
 	srv := &http.Server{
-		Addr:         ":8080",
+		Addr:         ":8000",
 		Handler:      s.router,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
+	}
+
+	err := s.initRoutes()
+	if err != nil {
+		return err
 	}
 
 	return srv.ListenAndServe()

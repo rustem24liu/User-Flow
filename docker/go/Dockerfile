@@ -16,7 +16,6 @@ RUN apk add --no-cache ghostscript tzdata
 ENV TZ=Asia/Almaty
 RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY --from=build /app/main main
-COPY --from=build /app/config.dev.yml config.yml
+COPY --from=build /app ./
 
-ENTRYPOINT ["/app/main"]
+CMD ["tail", "-f", "/dev/null"]
