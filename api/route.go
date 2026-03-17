@@ -32,5 +32,9 @@ func (s *Server) initDomainRoutes() {
 
 func (s *Server) initUserRoutes(handler *userhandler.Handler) {
 	userRoutes := mainRouter.Group("user/")
-	userRoutes.GET("show/:id", handler.Show)
+	userRoutes.GET("", handler.Get)
+	userRoutes.GET(":id", handler.Show)
+	userRoutes.POST("", handler.Create)
+	userRoutes.PUT("", handler.Update)
+	userRoutes.DELETE("", handler.Delete)
 }

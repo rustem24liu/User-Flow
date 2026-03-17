@@ -6,7 +6,7 @@ app:
 db:
   postgres:
     connection: postgres
-    host: 192.168.0.103
+    host: 10.10.72.12
     port: 5439
     database: user-flow
     username: rustem
